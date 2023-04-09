@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './Components/Header/Header';
+import MainPage from './Pages/MainPage/MainPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import EventPage from './Pages/EventPage/EventPage';
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Provider store={store}>
+          <Header />
+          <Routes>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/login' element={<MainPage />} />
+            <Route path='/register' element={<MainPage />} />
+            <Route path='/events'>
+              <Route path=':id' element={<EventPage />} />
+            </Route>
+            <Route path='/profile' element={<ProfilePage />} />
+            <Route path='*' element={<NotFoundPage />} />
+          </Routes>
+        </Provider>
+      </BrowserRouter>
     </div>
   );
 }

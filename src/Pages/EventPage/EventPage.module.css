@@ -1,0 +1,25 @@
+.details {
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text {
+    text-align: center;
+}
